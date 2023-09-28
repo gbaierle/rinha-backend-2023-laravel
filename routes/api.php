@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::prefix('/pessoas')->group(function () {
+//     Route::get('/', PersonSearchController::class);
+//     Route::get('/p{uuid}', [PersonController::class, 'show']);
+//     Route::post('/', [PersonController::class, 'store']);
+// });
+// Route::get('/contagem-pessoas', PersonCountController::class);
