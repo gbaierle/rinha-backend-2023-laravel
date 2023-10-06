@@ -17,10 +17,14 @@ class PersonFactory extends Factory
     public function definition(): array
     {
         return [
+            'uuid' => fake()->uuid(),
             'name' => fake()->name(),
-            'nick' => fake()->word(),
+            'nick' => fake()->unique()->userName(),
             'birth_date' => fake()->date(),
-            'stack' => [fake()->word(), fake()->word()],
+            'stack' => [
+                fake()->word(),
+                fake()->word()
+            ],
         ];
     }
 }

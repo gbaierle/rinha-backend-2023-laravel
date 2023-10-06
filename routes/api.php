@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::prefix('/pessoas')->group(function () {
-//     Route::get('/', PersonSearchController::class);
-//     Route::get('/p{uuid}', [PersonController::class, 'show']);
-//     Route::post('/', [PersonController::class, 'store']);
-// });
-// Route::get('/contagem-pessoas', PersonCountController::class);
+Route::prefix('/pessoas')->group(function () {
+    Route::post('/', [PersonController::class, 'store']);
+});
