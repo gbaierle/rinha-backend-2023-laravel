@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 
-class PersonControllerTest extends TestCase
+class CreatePersonTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
@@ -79,5 +79,33 @@ class PersonControllerTest extends TestCase
 
         $response = $this->postJson('/pessoas', $data);
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    public function testNonStringNameShouldBeInvalid(): void
+    {
+        $data = [
+            'apelido' => $this->faker->unique()->userName(),
+            'nome' => 123,
+            'nascimento' => $this->faker->date('Y-m-d'),
+            'stack' => [
+                $this->faker->word(),
+            ],
+        ];
+
+        $response = $this->postJson('/pessoas', $data);
+        $response->assertStatus(Response::HTTP_BAD_REQUEST);
+    }
+
+    public function testNonStringStackShouldBeInvalid(): void
+    {
+        $data = [
+            'apelido' => $this->faker->unique()->userName(),
+            'nome' => $this->faker->word(),
+            'nascimento' => $this->faker->date('Y-m-d'),
+            'stack' => [1, 'PHP'],
+        ];
+
+        $response = $this->postJson('/pessoas', $data);
+        $response->assertStatus(Response::HTTP_BAD_REQUEST);
     }
 }
