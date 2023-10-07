@@ -18,6 +18,12 @@ class PersonController extends Controller
         $this->repository = $repository;
     }
 
+    public function count()
+    {
+        $count = $this->repository->count();
+        return response($count);
+    }
+
     public function search(Request $request)
     {
         $searchTerm = $request->get('t');

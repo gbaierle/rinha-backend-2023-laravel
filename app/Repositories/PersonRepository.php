@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Collection;
 
 class PersonRepository
 {
+    public function count(): int
+    {
+        return Person::count();
+    }
+
     public function getById(string $uuid): Person
     {
         return Person::where('uuid', $uuid)->firstOrFail();

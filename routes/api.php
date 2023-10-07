@@ -19,3 +19,5 @@ Route::prefix('/pessoas')->group(function () {
     Route::get('/', [PersonController::class, 'search']);
     Route::post('/', [PersonController::class, 'store']);
 });
+
+Route::get('/contagem-pessoas', [PersonController::class, 'count']);
