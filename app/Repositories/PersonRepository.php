@@ -7,6 +7,11 @@ use Carbon\Carbon;
 
 class PersonRepository
 {
+    public function getById(string $uuid): Person
+    {
+        return Person::where('uuid', $uuid)->firstOrFail();
+    }
+
     public function store(array $data): Person
     {
         $person = new Person();

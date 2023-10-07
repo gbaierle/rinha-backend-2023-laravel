@@ -15,7 +15,7 @@ class PersonResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'uuid' => $this->uuid,
+            'id' => $this->uuid,
             'apelido' => $this->nick,
             'nome' => $this->name,
             'nascimento' => $this->birth_date->format('Y-m-d'),

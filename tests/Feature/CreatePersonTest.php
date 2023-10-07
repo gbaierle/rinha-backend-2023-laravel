@@ -29,7 +29,7 @@ class CreatePersonTest extends TestCase
 
         $response->assertCreated();
         $response->assertJson(['data' => $data]);
-        $response->assertHeader('Location', sprintf('/pessoas/' . $response->json()['data']['uuid']));
+        $response->assertHeader('Location', sprintf('/pessoas/' . $response->json()['data']['id']));
     }
 
     public function testDuplicateNickShouldBeInvalid(): void
