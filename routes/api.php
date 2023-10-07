@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/pessoas')->group(function () {
     Route::get('/{uuid}', [PersonController::class, 'show']);
+    Route::get('/', [PersonController::class, 'search']);
     Route::post('/', [PersonController::class, 'store']);
 });

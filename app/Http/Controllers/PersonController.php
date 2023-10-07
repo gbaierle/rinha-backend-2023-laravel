@@ -18,6 +18,18 @@ class PersonController extends Controller
         $this->repository = $repository;
     }
 
+    public function search(Request $request)
+    {
+        $searchTerm = $request->get('t');
+
+        if (!$searchTerm) {
+            abort(Response::HTTP_BAD_REQUEST);
+        }
+
+        $persons = $this->repository->search($searchTerm);
+        return PersonResource::collection($persons);
+    }
+
     public function show(Request $request, string $uuid)
     {
         $person = $this->repository->getById($uuid);
